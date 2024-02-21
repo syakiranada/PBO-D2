@@ -1,3 +1,10 @@
+/* 
+File     : Titik.java
+Tanggal  : 21 Februari 2024
+Pembuat  : Syakira Nada Nirwana - 24060122130049
+Deskripsi: Kelas Titik yang merupakan sebuah titik dengan absis dan ordinat
+*/
+
 public class Titik{
     double absis;
     double ordinat;
