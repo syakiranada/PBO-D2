@@ -5,7 +5,11 @@
 package guiproject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.DefaultListModel;
 
 /**
@@ -16,6 +20,8 @@ public class Proyek4 extends javax.swing.JFrame {
 
     DefaultListModel<String> dlm;
     List<String> items = new ArrayList<>();
+    Set<String> itemsSet = new HashSet<>();
+    Map<String, String> itemsMap = new HashMap<>(); 
     String[] datas = {"buku", "meja", "kursi", "tas", "pintu"};
     
     /**
@@ -29,6 +35,9 @@ public class Proyek4 extends javax.swing.JFrame {
         for (String data : datas){
             dlm.addElement(data);
             updateJumDataTersimpan();
+            updateJumDataSetTersimpan();
+            updateJumDataMapTersimpan();
+            
         }
     }
 
@@ -37,8 +46,18 @@ public class Proyek4 extends javax.swing.JFrame {
     }
     
     private void updateJumDataTersimpan(){
-        jLabelJumlahData.setText(
+        jLabelJumlahDataList.setText(
                 "Data tersimpan = " + items.size());
+    }
+    
+    private void updateJumDataSetTersimpan(){
+        jLabelJumlahDataSet.setText(
+                "Data tersimpan = " + itemsSet.size());
+    }
+    
+    private void updateJumDataMapTersimpan(){
+        jLabelJumlahDataMap.setText(
+                "Data tersimpan = " + itemsMap.size());
     }
     
     /**
@@ -58,9 +77,15 @@ public class Proyek4 extends javax.swing.JFrame {
         jButtonUpdate = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonClearAll = new javax.swing.JButton();
-        jButtonInsertData = new javax.swing.JButton();
-        jButtonSaveData = new javax.swing.JButton();
-        jLabelJumlahData = new javax.swing.JLabel();
+        jButtonInsertDataList = new javax.swing.JButton();
+        jButtonSaveDataList = new javax.swing.JButton();
+        jLabelJumlahDataList = new javax.swing.JLabel();
+        jButtonSaveDataSet = new javax.swing.JButton();
+        jButtonInsertDataSet = new javax.swing.JButton();
+        jButtonSaveDataMap = new javax.swing.JButton();
+        jButtonInsertDataMap = new javax.swing.JButton();
+        jLabelJumlahDataSet = new javax.swing.JLabel();
+        jLabelJumlahDataMap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,76 +132,132 @@ public class Proyek4 extends javax.swing.JFrame {
             }
         });
 
-        jButtonInsertData.setText("Insert Data");
-        jButtonInsertData.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInsertDataList.setText("<- Insert Data List");
+        jButtonInsertDataList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInsertDataActionPerformed(evt);
+                jButtonInsertDataListActionPerformed(evt);
             }
         });
 
-        jButtonSaveData.setText("Save Data");
-        jButtonSaveData.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSaveDataList.setText("Save Data List ->");
+        jButtonSaveDataList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaveDataActionPerformed(evt);
+                jButtonSaveDataListActionPerformed(evt);
             }
         });
+
+        jLabelJumlahDataList.setText("Data tersimpan = 0");
+
+        jButtonSaveDataSet.setText("Save Data Set ->");
+        jButtonSaveDataSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveDataSetActionPerformed(evt);
+            }
+        });
+
+        jButtonInsertDataSet.setText("<- Insert Data Set");
+        jButtonInsertDataSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertDataSetActionPerformed(evt);
+            }
+        });
+
+        jButtonSaveDataMap.setText("Save Data Map ->");
+        jButtonSaveDataMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveDataMapActionPerformed(evt);
+            }
+        });
+
+        jButtonInsertDataMap.setText("<- Insert Data Map");
+        jButtonInsertDataMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertDataMapActionPerformed(evt);
+            }
+        });
+
+        jLabelJumlahDataSet.setText("Data tersimpan = 0");
+
+        jLabelJumlahDataMap.setText("Data tersimpan = 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonClearAll)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonAdd)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonUpdate))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelNamaItem)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextFieldNamaItem))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonDelete)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                            .addComponent(jButtonClearAll)))
-                    .addComponent(jButtonSaveData, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNamaItem)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonInsertData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelJumlahData)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonDelete))
+                    .addComponent(jButtonInsertDataSet, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButtonSaveDataMap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonInsertDataMap, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jButtonSaveDataSet, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelJumlahDataMap, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelJumlahDataSet, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonInsertDataList, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jButtonSaveDataList, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelJumlahDataList, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNamaItem, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelJumlahDataList)
+                            .addComponent(jButtonSaveDataList))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonInsertDataList)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonInsertData)
-                            .addComponent(jLabelJumlahData))
+                            .addComponent(jLabelJumlahDataSet)
+                            .addComponent(jButtonSaveDataSet))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonInsertDataSet)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelJumlahDataMap)
+                                .addComponent(jButtonSaveDataMap))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jButtonInsertDataMap)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(jLabelNamaItem)
                         .addGap(8, 8, 8)
-                        .addComponent(jButtonSaveData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNamaItem)
-                            .addComponent(jTextFieldNamaItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAdd)
-                            .addComponent(jButtonUpdate))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonDelete)
-                            .addComponent(jButtonClearAll)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jTextFieldNamaItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonClearAll)
+                    .addComponent(jButtonAdd)
+                    .addComponent(jButtonUpdate)
+                    .addComponent(jButtonDelete))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -215,14 +296,14 @@ public class Proyek4 extends javax.swing.JFrame {
         dlm.clear();
     }//GEN-LAST:event_jButtonClearAllActionPerformed
 
-    private void jButtonInsertDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertDataActionPerformed
+    private void jButtonInsertDataListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertDataListActionPerformed
         // TODO add your handling code here:
         for (String item : items){
             dlm.addElement(item);
         }
-    }//GEN-LAST:event_jButtonInsertDataActionPerformed
+    }//GEN-LAST:event_jButtonInsertDataListActionPerformed
 
-    private void jButtonSaveDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveDataActionPerformed
+    private void jButtonSaveDataListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveDataListActionPerformed
         // TODO add your handling code here:
         if (!items.isEmpty()){
             items.clear();
@@ -233,7 +314,49 @@ public class Proyek4 extends javax.swing.JFrame {
         }
         
         updateJumDataTersimpan();
-    }//GEN-LAST:event_jButtonSaveDataActionPerformed
+    }//GEN-LAST:event_jButtonSaveDataListActionPerformed
+
+    private void jButtonSaveDataSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveDataSetActionPerformed
+        // TODO add your handling code here:
+        if (!itemsSet.isEmpty()){
+            itemsSet.clear();
+        }
+        
+        for (int i = 0; i < dlm.getSize(); i++){
+            itemsSet.add(dlm.getElementAt(i));
+        }
+        
+        updateJumDataSetTersimpan();
+    }//GEN-LAST:event_jButtonSaveDataSetActionPerformed
+
+    private void jButtonInsertDataSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertDataSetActionPerformed
+        // TODO add your handling code here:
+        for (String item : itemsSet){
+            dlm.addElement(item);
+        }
+    }//GEN-LAST:event_jButtonInsertDataSetActionPerformed
+
+    private void jButtonSaveDataMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveDataMapActionPerformed
+        // TODO add your handling code here:
+        if (!itemsMap.isEmpty()){
+            itemsMap.clear();
+        }
+        
+        for (int i = 0; i < dlm.getSize(); i++){
+            String item = dlm.getElementAt(i);
+            String key = "item_" + i;
+            itemsMap.put(key, item);
+        }
+        
+        updateJumDataMapTersimpan();
+    }//GEN-LAST:event_jButtonSaveDataMapActionPerformed
+
+    private void jButtonInsertDataMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertDataMapActionPerformed
+        // TODO add your handling code here:
+        for (Map.Entry<String, String> item : itemsMap.entrySet()){
+            dlm.addElement(item.getValue()); //yang ditampilkan hanya value
+        }
+    }//GEN-LAST:event_jButtonInsertDataMapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,10 +397,16 @@ public class Proyek4 extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonClearAll;
     private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonInsertData;
-    private javax.swing.JButton jButtonSaveData;
+    private javax.swing.JButton jButtonInsertDataList;
+    private javax.swing.JButton jButtonInsertDataMap;
+    private javax.swing.JButton jButtonInsertDataSet;
+    private javax.swing.JButton jButtonSaveDataList;
+    private javax.swing.JButton jButtonSaveDataMap;
+    private javax.swing.JButton jButtonSaveDataSet;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JLabel jLabelJumlahData;
+    private javax.swing.JLabel jLabelJumlahDataList;
+    private javax.swing.JLabel jLabelJumlahDataMap;
+    private javax.swing.JLabel jLabelJumlahDataSet;
     private javax.swing.JLabel jLabelNamaItem;
     private javax.swing.JList<String> jListItem;
     private javax.swing.JScrollPane jScrollPane1;
